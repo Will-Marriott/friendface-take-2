@@ -67,7 +67,7 @@ First, we need to convert our project into a Maven project.
 > **❕ Note: Maven relies on a master pom (Project Object Model) which assumes that the Java language version is 5**  
 > We're using Java 11 and some of our code may rely on its features which version 5 won't support.
 
-- Add the contents of [pom_fragment.tst](pom_fragment.txt) to the project's `pom.xml`, this will:
+- Add the contents of [pom_fragment.txt](pom_fragment.txt) to the project's `pom.xml`, this will:
   - Specify that we're using Java 11 
   - Specify that our source and output are encoded in UTF-8
   - Specify JUnit as a dependency
