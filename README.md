@@ -30,7 +30,7 @@ This section aims to provide a few steps to configure your JDK (Java Development
 
 Maven is a build automation tool for Java projects. There are many ways to compile the project that we will create, but Maven gives us a convention to follow that other developers will also be familiar with. When we need to use a library that is not included in the JDK, Maven gives us a way to define that _dependency_ and automatically download it from Maven's central repository when we build our project. 
 
-[This guide](https://maven.apache.org/install.html) covers how to install Maven. 
+You can download the latest release [here](https://maven.apache.org/download.cgi). There is also [this guide](https://maven.apache.org/install.html), which covers how to install Maven. 
 
 #### Install and Configure IntelliJ
 
@@ -42,7 +42,8 @@ Maven is a build automation tool for Java projects. There are many ways to compi
 - In the project explorer, right click the source folder and choose "Mark Directory as > Sources Root"
   - This should now show the `Main` and `UserPost` classes as Java classes
 - Run the application by clicking the play button or by going to "Run > Run 'Main'"
-  - This may fail if it cannot find an out folder or if the language setting isn't compatible with the Java SDK running
+  - This may fail if it cannot find an out folder or if the language setting isn't compatible with the Java SDK running.
+  - If you are getting the error message `java: error: release version 17 not supported` or similar, try right-clicking the source folder > Open Project Settings, and change the language level to 11.
 - Look at the Run window for a list of the example posts
 
 ### Tasks
