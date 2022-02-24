@@ -28,7 +28,7 @@ This section aims to provide a few steps to configure your JDK (Java Development
 
 #### Install Maven
 
-Maven is a build automation tool for Java projects. There are many ways to compile the project that we will create, but Maven gives us a convention to follow that other developers will also be familiar with. When we need to use a library that is not included in the JDK, Maven gives us a way to define that _dependency_ and automatically download it from Maven's central repository when we build our project. 
+Maven is a build automation tool for Java projects, which we can use to compile the code we have written into something that can be run by a computer. There are many ways to compile the project that we will create, but Maven gives us a convention to follow that other developers will also be familiar with. When we need to use a library (a set of code that someone has written and we can reuse to save time) that is not included in the JDK, Maven gives us a way to define that _dependency_ and automatically download it from Maven's central repository when we build our project. 
 
 You can download the latest release [here](https://maven.apache.org/download.cgi). There is also [this guide](https://maven.apache.org/install.html), which covers how to install Maven. 
 
@@ -38,7 +38,6 @@ You can download the latest release [here](https://maven.apache.org/download.cgi
 - Install [IntelliJ Community](https://www.jetbrains.com/idea/download/)
 - Import the project
   - Notice that a folder called `.idea` has been created in your project, the contents of this folder have been marked as git ignored
-
 - In the project explorer, right click the source folder and choose "Mark Directory as > Sources Root"
   - This should now show the `Main` and `UserPost` classes as Java classes
 - Run the application by clicking the play button or by going to "Run > Run 'Main'"
@@ -48,7 +47,7 @@ You can download the latest release [here](https://maven.apache.org/download.cgi
 
 ### Tasks
 
-We're going to implement a mechanism to sort posts by various their various attributes. We'll also convert the project to the structure used by Maven so that we can use JUnit to test our post sorters. 
+We're going to implement a mechanism to sort posts by their various attributes. We'll also convert the project to the structure used by Maven so that we can use JUnit to test our post sorters. 
 
 #### 1. Implement AuthorPostSorter
 
@@ -81,7 +80,7 @@ The first extension task, below, is to refactor the code you’re about to write
   - Check that the method can sort user posts by author name without case sensitivity
   - Check that the method can cope with bad input - e.g. a `null` or empty input list
 
-> **❕ For the remainder of this project you should include new unit tests in addition to every new method/change in behaviour added to classes**
+> **❕ For the remainder of this project you should include new unit tests in addition to every new method/change in behaviour added to classes. Best practice is to write your unit tests before you write/change your methods implementation, watch them fail, and then watch them pass once you finish coding.**
 
 - A `SortOrder` enum has been included in the solution. Adjust the PostSorter interface so that the sort method can be sorted in ascending or descending order and edit the `AuthorPostSorter` and tests accordingly
   - Write classes which each provide a method for sorting by:
@@ -99,25 +98,24 @@ The first extension task, below, is to refactor the code you’re about to write
 
 
 - Write classes for combining other filters using AND and OR
-  - The AND and OR filters should also implement `PostFilter`
-  - They should be composed of two other implementations of `PostFilter`, these can be specified in the constructor
+  - The AND and OR filters are filters and so should also implement `PostFilter`
 
 
-- Use the filters and sorters that you have created to create some new classes that:
-  - Filter posts by author name and sort by date posted
+- Now that you've created some filters and sorters, let's reuse these to build more advanced functionality. Create classes that:
+  - Sorts the posts first by the author name, and then each authors' posts are sorted by the date posted
   - Takes a keyword as input and returns the posts ordered by the number of times the keyword appears in the `Post` content
 
 - Write a new class which will extract topics from the content of a `Post` using regex or otherwise:
 
-    Here we are considering a topic as a keyword that is used multiple times. E.g. if a post mentions “owl” “owl” and “owls” (and there is no more-frequent word), then “owl” would be the keyword. As usual, the unit tests should be agnostic to the implementation here
+> Here we are considering a topic as a keyword that is not a stop word and is the most common word. E.g. if a post mentions “owl” “owl” and “owls” (and there is no more-frequent word), then “owl” would be the keyword. As usual, the unit tests should be agnostic to the implementation here
  
-  - Write a method to group user posts into a topic and return the list sorted by possible topics
+- Write a method to group user posts into their topics and return the list sorted by the most popular topics
 
-    If you have some posts about Owls and some about Pandas, then sorting ascending by topic should return the Owl posts first, and then the Pandas. Within the Owl posts, the ones that mention owls the most should be first, with decreasing "owliness".
+> If you have five posts about Owls and four about Pandas, then sorting ascending by topic should return the Panda posts first, and then the Owls. Within the Owl posts, the ones that mention owls the most should be first, with decreasing "owliness".
 
 ### Extension Tasks
 
 > Streams are wrappers around a data source which make bulk operations on the data source more convenient. Don't worry, we'll use them to demonstrate how important good unit test design is later. Read more about them [here](https://www.oracle.com/technical-resources/articles/Java/ma14-Java-se-8-streams.html).
 
-- Rewrite the above sort and filter classes using Java streams. All unit tests should be unaffected
+- Rewrite the above sort and filter classes using Java streams. You shouldn't need to modify your unit tests and they should all still pass after you've finished.
 - Write a class which can take a JSON representation of a filter and sort method and produce the runtime filter/sort for this
