@@ -8,7 +8,7 @@
 
 - Understand how to use Git to manage code
 
-### Skills
+### Taught Skills
 
 - Writing Java code
 - Unit testing for Java
