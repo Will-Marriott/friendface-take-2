@@ -31,7 +31,7 @@ public class Main {
     private static void printAllUserPosts(List<UserPost> userPosts) {
         for(UserPost userPost : userPosts) {
             System.out.println(userPost);
-            System.out.println("");
+            System.out.println();
         }
     }
 }
