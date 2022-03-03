@@ -40,7 +40,9 @@ You can download the latest release [here](https://maven.apache.org/download.cgi
   - Click File -> New -> Project from existing sources...
   - Navigate to the directory where you cloned your forked version of the repository and click "OK"
   - Select the option to "Import project from external model" and then choose Maven, and click "Finish" 
-- Run the application by clicking the play button or by going to "Run > Run 'Main'"
+- Run the application by:
+  - Navigating to the class `com.scottlogic.Main` 
+  - Click the play button to the left of line 10, `public static void main ...`
   - This may fail if the language setting isn't compatible with the Java SDK running
   - If you are getting the error message `java: error: release version 17 not supported` or similar, try right-clicking the source folder > Open Project Settings, and change the language level to 11.
 - Look at the Run window for a list of the example posts
