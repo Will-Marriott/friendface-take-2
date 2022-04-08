@@ -21,7 +21,7 @@
 
 This section aims to provide a few steps to configure your JDK (Java Development Kit) for use with Maven and IntelliJ. Feel free to skip ahead to Installing Maven if you are already comfortable with this, or you've used IntelliJ to install Java. 
 
-- Install [Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
+- Install [Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html):
    - The installer will probably add a `%JAVA_HOME%` environment variable pointing at the installation directory of the JDK e.g. "C:\Program Files\Amazon Corretto\jdk11.0.12_7"
    - Verify this with the command `echo %JAVA_HOME%` on Windows cmd prompt or `echo $JAVA_HOME` on Bash, both should print out the JDK installation folder
    - `Java.exe` and `Javac.exe` should also be accessible on your `PATH` so add the bin directory from your JDK installation folder to your `PATH` variable
@@ -36,7 +36,7 @@ You can download the latest release [here](https://maven.apache.org/download.cgi
 
 - Install [IntelliJ Community](https://www.jetbrains.com/idea/download/)
 - Fork this repository and clone your fork to a Dev location (for example `C:\Dev\posting-sorting-grad-project`)
-- Import the project
+- Import the project:
   - Click File -> New -> Project from existing sources...
   - Navigate to the directory where you cloned your forked version of the repository and click "OK"
   - Select the option to "Import project from external model" and then choose Maven, and click "Finish" 
@@ -44,7 +44,7 @@ You can download the latest release [here](https://maven.apache.org/download.cgi
   - Navigating to the class `com.scottlogic.Main` 
   - Click the play button to the left of line 10, `public static void main ...`
   - This may fail if the language setting isn't compatible with the Java SDK running
-  - If you are getting the error message `java: error: release version 17 not supported` or similar, try right-clicking the source folder > Open Project Settings, and change the language level to 11.
+  - If you are getting the error message `java: error: release version 17 not supported` or similar, try right-clicking the source folder > Open Project Settings, and change the language level to 11
 - Look at the Run window for a list of the example posts
 
 ## Tasks
@@ -87,14 +87,14 @@ The first extension task, below, is to refactor the code you’re about to write
 
 > **❕ For the remainder of this project you should include new unit tests in addition to every new method/change in behaviour added to classes. Best practice is to write your unit tests before you write/change your methods implementation, watch them fail, and then watch them pass once you finish coding.**
 
-> **! A `SortOrder` enum has been included in the solution. Adjust the PostSorter interface so that the sort method can be sorted in ascending or descending order and edit the `AuthorPostSorter` and tests accordingly
+> **❕ A `SortOrder` enum has been included in the solution. Adjust the PostSorter interface so that the sort method can be sorted in ascending or descending order and edit the `AuthorPostSorter` and tests accordingly.**
 
 ### 3. Implement Sorters
 - Write classes which each provide a method for sorting by:
    - Date submitted
    - Number of likes
    - Length of content in post
-   - Author name extended - if a surname is provided, sort by surname, otherwise sort by first name.
+   - Author name extended - if a surname is provided, sort by surname, otherwise sort by first name
 
 ### 4. Implement Filters
 - Write a new interface called `PostFilter` for classes that can filter an input list and return a reduced list. Write classes which can filter by:
@@ -113,7 +113,7 @@ The first extension task, below, is to refactor the code you’re about to write
   - Takes a keyword as input and returns the posts ordered by the number of times the keyword appears in the `Post` content
 
 ### 7. Implement Topic Filter
-- Write a new class which will extract topics from the content of a `Post` using regex or otherwise:
+- Write a new class which will extract topics from the content of a `Post` using regex or otherwise
 
 > Here we are considering a topic as a keyword that is not a stop word and is the most common word. E.g. if a post mentions “owl” “owl” and “owls” (and there is no more-frequent word), then “owl” would be the keyword. As usual, the unit tests should be agnostic to the implementation here
  
@@ -125,5 +125,6 @@ The first extension task, below, is to refactor the code you’re about to write
 
 > Streams are wrappers around a data source which make bulk operations on the data source more convenient. Don't worry, we'll use them to demonstrate how important good unit test design is later. Read more about them [here](https://www.oracle.com/technical-resources/articles/Java/ma14-Java-se-8-streams.html).
 
-8. Rewrite the above sort and filter classes using Java streams. You shouldn't need to modify your unit tests and they should all still pass after you've finished.
-9. Write a class which can take a JSON representation of a filter and sort method and produce the runtime filter/sort for this
+8. Rewrite the above sort and filter classes using Java streams
+   - You shouldn't need to modify your unit tests and they should all still pass after you've finished.
+10. Write a class which can take a JSON representation of a filter and sort method and produce the runtime filter/sort for this
