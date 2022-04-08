@@ -84,10 +84,11 @@ The first extension task, below, is to refactor the code you’re about to write
   - Keep running your tests as you write this method, you should also add to them: 
     - Check that the method can sort user posts by author name without case sensitivity
     - Check that the method can cope with bad input - e.g. a `null` or empty input list
+- A `SortOrder` enum has been included in the solution. Adjust the PostSorter interface so that the sort method can be sorted in ascending or descending order and edit the `AuthorPostSorter` and tests accordingly.
 
 > **❕ For the remainder of this project you should include new unit tests in addition to every new method/change in behaviour added to classes. Best practice is to write your unit tests before you write/change your methods implementation, watch them fail, and then watch them pass once you finish coding.**
 
-> **❕ A `SortOrder` enum has been included in the solution. Adjust the PostSorter interface so that the sort method can be sorted in ascending or descending order and edit the `AuthorPostSorter` and tests accordingly.**
+
 
 ### 3. Implement Sorters
 - Write classes which each provide a method for sorting by:
