@@ -24,13 +24,19 @@ This section aims to provide a few steps to configure your JDK (Java Development
 - Install [Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html):
    - The installer will probably add a `%JAVA_HOME%` environment variable pointing at the installation directory of the JDK e.g. "C:\Program Files\Amazon Corretto\jdk11.0.12_7"
    - Verify this with the command `echo %JAVA_HOME%` on Windows cmd prompt or `echo $JAVA_HOME` on Bash, both should print out the JDK installation folder
-   - `Java.exe` and `Javac.exe` should also be accessible on your `PATH` so add the bin directory from your JDK installation folder to your `PATH` variable
+   - To check that Java has been installed and is available on the [`PATH`](https://stackoverflow.com/a/57423356), run the `where` command.
+     ```
+     C:\Users\jhunt\OneDrive - Scott Logic Ltd\Documents\post-sorting-grad-project>where java
+     C:\Program Files\Amazon Corretto\jdk11.0.17_8\bin\java.exe
+     ```
+     - Do the same to check `javac` can be found
+   - If they cannot be found on your `PATH`, add the bin directory from your JDK installation folder to your `PATH` variable
 
 ### Install Maven
 
 Maven is a build automation tool for Java projects, which we can use to compile the code we have written into something that can be run by a computer. There are many ways to compile the project that we will create, but Maven gives us a convention to follow that other developers will also be familiar with. When we need to use a library (a set of code that someone has written and we can reuse to save time) that is not included in the JDK, Maven gives us a way to define that _dependency_ and automatically download it from Maven's central repository when we build our project. 
 
-You can download the latest release [here](https://maven.apache.org/download.cgi), if you are using windows then you will need the most recent zip file. [This guide](https://maven.apache.org/install.html) covers how to install Maven. 
+You can download the latest release [here](https://maven.apache.org/download.cgi), if you are using windows then you will need the most recent zip file. [This guide](https://maven.apache.org/install.html) covers how to install Maven. Check it has been correctly installed using the `where mvn` command.
 
 ### Install and Configure IntelliJ
 
@@ -113,7 +119,7 @@ The first extension task, below, is to refactor the code you’re about to write
   - Sorts the posts first by the author name, and then each authors' posts are sorted by the date posted
   - Takes a keyword as input and returns the posts ordered by the number of times the keyword appears in the `Post` content
 
-### 7. Implement Topic Filter
+### 7. Implement Topic Sorter
 - Write a new class which will extract topics from the content of a `Post` using regex or otherwise
 
 > Here we are considering a topic as a keyword that is not a stop word and is the most common word. E.g. if a post mentions “owl” “owl” and “owls” (and there is no more-frequent word), then “owl” would be the keyword. As usual, the unit tests should be agnostic to the implementation here
