@@ -26,7 +26,7 @@ This section aims to provide a few steps to configure your JDK (Java Development
    - Verify this with the command `echo %JAVA_HOME%` on Windows cmd prompt or `echo $JAVA_HOME` on Bash, both should print out the JDK installation folder
    - To check that Java has been installed and is available on the [`PATH`](https://stackoverflow.com/a/57423356), run the `where` command. You will need to restart the terminal so the new `PATH` variables are available.
      ```
-     C:\Users\jhunt\OneDrive - Scott Logic Ltd\Documents\post-sorting-grad-project>where java
+     $ where java
      C:\Program Files\Amazon Corretto\jdk11.0.17_8\bin\java.exe
      ```
      - Do the same to check `javac` can be found
@@ -119,7 +119,7 @@ The first extension task, below, is to refactor the code you’re about to write
   - Sorts the posts first by the author name, and then each authors' posts are sorted by the date posted
   - Takes a keyword as input and returns the posts ordered by the number of times the keyword appears in the `Post` content
 
-### 7. Implement Topic Sorter
+### 7. Implement Topic Filter
 - Write a new class which will extract topics from the content of a `Post` using regex or otherwise
 
 > Here we are considering a topic as a keyword that is not a stop word and is the most common word. E.g. if a post mentions “owl” “owl” and “owls” (and there is no more-frequent word), then “owl” would be the keyword. As usual, the unit tests should be agnostic to the implementation here
