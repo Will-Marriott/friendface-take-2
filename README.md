@@ -29,7 +29,7 @@ This section aims to provide a few steps to configure your JDK (Java Development
      $ where java
      C:\Program Files\Amazon Corretto\jdk11.0.17_8\bin\java.exe
      ```
-     - Do the same to check `javac` can be found
+   - Do the same to check `javac` can be found
    - If they cannot be found on your `PATH`, add the bin directory from your JDK installation folder to your `PATH` variable
 
 ### Install Maven
