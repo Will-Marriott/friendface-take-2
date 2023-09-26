@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { addPost } from '../Store/Features/postsSlice'
 import { useSelector } from "react-redux"
+import AddPostForm from './AddPostForm'
+import SortersAndFilters from './SortersAndFilters'
 
 
 function Posts() {
@@ -13,10 +15,11 @@ function Posts() {
     const posts = useSelector(state => state.posts.value)  
   
     return (
-    <div>
+    <div>    
+    <SortersAndFilters />
             {posts.map((post) => 
           
-            <h3>{post.authorFirstName} {post.authorSurname} said: <br/>{post.contents}</h3>)}
+            <h3 key= {post.id}>{post.authorFirstName} {post.authorSurname} said: <br/>{post.contents}</h3>)}
     </div>
   )
 }
