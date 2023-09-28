@@ -2,6 +2,7 @@
 import CreatePost from "./Components/CreatePost";
 import Header from "./Components/Header";
 import Posts from "./Components/Posts";
+import "./index.css"
 
 
 function App() {

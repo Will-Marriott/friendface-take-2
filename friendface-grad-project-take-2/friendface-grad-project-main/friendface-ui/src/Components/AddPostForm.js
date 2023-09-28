@@ -1,25 +1,96 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
+import { useDispatch } from 'react-redux';
+import { addPost } from '../Store/Features/postsSlice';
+import Posts from './Posts';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 function AddPostForm() {
+  
+  //Setting the states for each element of form
+
+
+  
+  const [author, setAuthor] = useState('')
+  const [content, setContent] = useState('')
+  const [date, setDate] = useState('')
+  const [color, setColour] = useState('')
+  const dispatch = useDispatch()
+  
+    const post={
+      "author": author,
+      "colour": color,
+      "content": content,
+      "date": date,
+      "likes": 0
+    }
+  
+    const posts = useSelector(state => state.posts.value) 
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    setAuthor('')
+    setContent('')
+    setDate('')
+    setColour('')
+    dispatch(addPost(post))
+  }
+
+  const onClick = () => console.log(posts)
 
   
   return (
+    // form copied over from html project, with some adjustments
     <div>
-    <form className='add-post-form'>
+      <form id="add-post" className='add-form' onSubmit={onSubmit}>
+        
         Author:
-        <input id="author-field" type="text" required/>
+        <input 
+        id="author-field" 
+        type="text"
+        placeholder="Enter your name here..."
+        value={author}
+        onChange={(e) => {
+          setAuthor(e.target.value)
+        }}
+        required/>
+        
         Avatar colour:
-        <input type="color" id="avatar-colour"/>
+        <input 
+        type="color" 
+        id="avatar-colour"
+        onChange={(e) => {
+          setColour(e.target.value)}}
+        /> 
+        
         Date:
-        <input id="date-field" type="date" required />
+        <input 
+        id="date-field" 
+        type="date"
+        value={date}
+        onChange={(e) => {
+          setDate(e.target.value)}} 
+        required />
         <br />
+        
         Content:
         <br />
-        <textarea rows="4" cols="100" id="content-field" type="text" required></textarea>
+        <textarea 
+        rows="4" 
+        cols="100" 
+        id="content-field"
+        value={content} 
+        type="text" 
+        placeholder='Share your thoughts...'
+        onChange={(e) => {
+          setContent(e.target.value)}}
+        required></textarea>
         <br />
-        <Button type="submit" />
+        
+        <input type='submit' value='Post' className='btn-submit'/>
+
       </form>
+      <input type='button' value='Log posts state'  onClick={onClick} />
     </div>
 
   )
