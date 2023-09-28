@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import SortersAndFilters from './SortersAndFilters'
+import { addLike } from '../Store/Features/postsSlice';
 
 
 function Posts() {
@@ -8,9 +9,11 @@ function Posts() {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.value)
 
-    const onLike = (post) => {
-      console.log(post.id);
+    const onLike = (id) => {
+      dispatch(addLike(id))
+      ;
     }
+    
 
 
 
@@ -45,7 +48,7 @@ function Posts() {
             </div>
             <div className='postBodyContainer'>
               <div className='postTitle'>
-              {post.authorName} on {post.date} said:
+              {post.author} on {post.date} said:
               </div>
         
               <div className='postContent'>
@@ -53,7 +56,7 @@ function Posts() {
               {/* <button onclick=likePost(${post.id})>Like</button><div>${post.likes} like(s)</div> */}
               </div>
               
-              <button onClick={() => console.log(post.id)}>Like</button>
+              <button onClick={() => onLike(post.id)}>Like</button>
               <div>{post.likes} like(s)</div>
             
             

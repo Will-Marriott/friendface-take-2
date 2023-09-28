@@ -18,14 +18,24 @@ export const postsSlice = createSlice({
             currentPosts.push(newPost);
 
             // return {currentState, value:currentPosts}
-            return {...state, value: currentPosts,}
+            return {...state, value: currentPosts}
             
+        },
+        addLike: (state, action) => {
+            //payload will be post.id
+            let targetPost = [...state.value][action.payload-1];
+
+            let updatedPost = {...targetPost, likes: targetPost.likes++}
+            let currentPosts = [...state.value]
+            currentPosts[action.payload-1] = updatedPost
         }
     }
 });
 
 
 
-export const { addPost } = postsSlice.actions
+export const { addPost, addLike } = postsSlice.actions
+
+
 
 export default postsSlice.reducer
