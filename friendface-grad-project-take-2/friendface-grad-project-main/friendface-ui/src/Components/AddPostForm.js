@@ -9,14 +9,14 @@ function AddPostForm() {
   const [author, setAuthor] = useState('')
   const [content, setContent] = useState('')
   const [date, setDate] = useState('')
-  const [color, setColour] = useState('')
+  const [colour, setColour] = useState('')
   const dispatch = useDispatch()  
   
   //Adds new post to DB and state
   const addPostToServer = async () => {
     const post={
       "author": author,
-      "color": color,
+      "colour": colour,
       "content": content,
       "date": date,
       "likes": 0

@@ -23,8 +23,6 @@ function Posts() {
       const postToLike = await fetchPost(id)
       const updPost = { ...postToLike}
       updPost.likes++
-      const test = () => {console.log(updPost)}
-      test()
 
       const res = await fetch(`http://localhost:5000/posts/${id}`, {
       method: 'PUT',
