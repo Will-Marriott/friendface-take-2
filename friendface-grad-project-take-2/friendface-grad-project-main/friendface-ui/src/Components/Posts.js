@@ -1,7 +1,8 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import SortersAndFilters from './SortersAndFilters'
-import { addLike } from '../Store/Features/postsSlice';
+import { addLike, initialSetPosts } from '../Store/Features/postsSlice';
 
 
 function Posts() {
@@ -9,21 +10,44 @@ function Posts() {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.value)
 
-    const onLike = (id) => {
-      dispatch(addLike(id))
-      ;
+    //returns target post
+    const fetchPost = async (id) => {
+      const res = await fetch(`http://localhost:5000/posts/${id}`)
+      const data = await res.json()
+      return data
+    }
+
+
+    //Adds likes to state and to DB
+    const onLike = async (id) => {
+      const postToLike = await fetchPost(id)
+      const updPost = { ...postToLike}
+      updPost.likes++
+      const test = () => {console.log(updPost)}
+      test()
+
+      const res = await fetch(`http://localhost:5000/posts/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updPost),
+    })
+    dispatch(addLike(id))
+
     }
     
-
-
-
-    //Like button functionality
-
-    // const onLike = () => {for (let i = 0; i < posts.length; i++) {
-    // if (posts[i].id == postId) {
-    //   posts[i].likes = posts[i].likes + 1;
-    // }}    
-    // }
+    
+    //Setting the initial posts state as the DB
+    useEffect(() => {
+      const fetchPosts = async () => {
+        const res = await fetch('http://localhost:5000/posts');
+        const data = await res.json();
+        dispatch(initialSetPosts(data))
+      };
+      fetchPosts();
+  
+    }, [dispatch]);
    
     return (
     <div>    
@@ -53,7 +77,6 @@ function Posts() {
         
               <div className='postContent'>
               {post.content}<br/>
-              {/* <button onclick=likePost(${post.id})>Like</button><div>${post.likes} like(s)</div> */}
               </div>
               
               <button onClick={() => onLike(post.id)}>Like</button>

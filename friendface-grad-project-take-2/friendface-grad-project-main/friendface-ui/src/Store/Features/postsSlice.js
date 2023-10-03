@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Posts, { posts } from "../../Components/Posts";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+
 
 const initialState = []
+
+
 
 
 export const postsSlice = createSlice({
@@ -28,13 +29,18 @@ export const postsSlice = createSlice({
             let updatedPost = {...targetPost, likes: targetPost.likes++}
             let currentPosts = [...state.value]
             currentPosts[action.payload-1] = updatedPost
+        },
+        initialSetPosts: (state, action) => {
+            //payload will be an array of posts fetched from DB
+            let currentPosts = [...action.payload]
+            return {value: currentPosts}
         }
     }
 });
 
 
 
-export const { addPost, addLike } = postsSlice.actions
+export const { addPost, addLike, initialSetPosts } = postsSlice.actions
 
 
 

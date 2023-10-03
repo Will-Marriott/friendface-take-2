@@ -1,41 +1,51 @@
 import React, { useState } from 'react'
-import Button from './Button'
 import { useDispatch } from 'react-redux';
 import { addPost } from '../Store/Features/postsSlice';
-import Posts from './Posts';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 function AddPostForm() {
   
   //Setting the states for each element of form
-
-
-  
   const [author, setAuthor] = useState('')
   const [content, setContent] = useState('')
   const [date, setDate] = useState('')
   const [color, setColour] = useState('')
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
   
+  //Adds new post to DB and state
+  const addPostToServer = async () => {
     const post={
       "author": author,
-      "colour": color,
+      "color": color,
       "content": content,
       "date": date,
       "likes": 0
     }
-  
-    const posts = useSelector(state => state.posts.value) 
+    
+    const res = await fetch('http://localhost:5000/posts', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(post),
+    })
+    dispatch(addPost(post))
+  }
 
+  
+  const posts = useSelector(state => state.posts.value) 
+
+  
   const onSubmit = (e) => {
     e.preventDefault()
+    addPostToServer();
     setAuthor('')
     setContent('')
     setDate('')
     setColour('')
-    dispatch(addPost(post))
   }
 
+  //Logs post state
   const onClick = () => console.log(posts)
 
   
