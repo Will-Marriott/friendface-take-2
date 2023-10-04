@@ -25,14 +25,13 @@ function Posts() {
       updPost.likes++
 
       const res = await fetch(`http://localhost:5000/posts/${id}`, {
-      method: 'PUT',
-      headers: {
+        method: 'PUT',
+        headers: {
         'Content-type': 'application/json'
-      },
-      body: JSON.stringify(updPost),
-    })
-    dispatch(addLike(id))
-
+        },
+        body: JSON.stringify(updPost),
+      })
+      dispatch(addLike(id))
     }
     
     
@@ -45,12 +44,12 @@ function Posts() {
       };
       fetchPosts();
   
-    }, [dispatch]);
+    }, []);
    
     return (
     <div>    
     <SortersAndFilters />
-            {posts.map((post) => 
+            {posts && posts.map((post) => 
           
             <div key={post.id}>
                         
