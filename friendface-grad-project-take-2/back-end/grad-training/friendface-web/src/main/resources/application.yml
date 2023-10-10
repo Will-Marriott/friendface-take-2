@@ -1,0 +1,11 @@
+spring.datasource:
+  url: jdbc:mariadb://localhost:3306/friendface
+  username: root
+  driver-class-name: org.mariadb.jdbc.Driver
+spring.jpa:
+  hibernate.ddl-auto: validate
+  properties.hibernate:
+    dialect: org.hibernate.dialect.MariaDB103Dialect
+    show_sql: true
+    format_sql: true
+    query.substitutions: true
