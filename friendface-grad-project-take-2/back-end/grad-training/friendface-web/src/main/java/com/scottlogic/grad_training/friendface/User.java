@@ -4,19 +4,22 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
-    @Entity
+@Entity
     @Table(name="users")
     public class User {
         @Id
         @Column
         private String username;
 
-        public String getUsername() {
+    public String getUsername() {
             return username;
         }
 
         public void setUsername(String username) {
             this.username = username;
         }
+
+
     }
