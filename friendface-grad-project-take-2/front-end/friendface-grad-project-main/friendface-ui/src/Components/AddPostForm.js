@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 function AddPostForm() {
   
+  
   //Setting the states for each element of form
   const [author, setAuthor] = useState('')
   const [content, setContent] = useState('')
@@ -16,13 +17,14 @@ function AddPostForm() {
   const addPostToServer = async () => {
     const post={
       "author": author,
-      "colour": colour,
+      "colour": colour || '#000000',
       "content": content,
       "date": date,
-      "likes": 0
+      "likes": 0,
+      "id": posts.length + 1
     }
     
-    const res = await fetch('http://localhost:5000/posts', {
+    const res = await fetch('http://localhost:8080/posts-api/posts', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

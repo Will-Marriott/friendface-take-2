@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.sample_work;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

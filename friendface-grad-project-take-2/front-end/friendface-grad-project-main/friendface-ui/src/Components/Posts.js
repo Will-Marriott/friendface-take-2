@@ -9,13 +9,21 @@ function Posts() {
 
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.value)
+    const reversedPosts = [...posts].reverse();
+
 
     //returns target post
     const fetchPost = async (id) => {
-      const res = await fetch(`http://localhost:5000/posts/${id}`)
-      const data = await res.json()
-      return data
+      const res = await fetch(`http://localhost:8080/posts-api/posts/${id}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        return data;
+      } else {
+        // Handle the case where the post is not found or other errors.
+        return null;
+      }
     }
+    
 
 
     //Adds likes to state and to DB
@@ -24,7 +32,7 @@ function Posts() {
       const updPost = { ...postToLike}
       updPost.likes++
 
-      const res = await fetch(`http://localhost:5000/posts/${id}`, {
+      const res = await fetch(`http://localhost:8080/posts-api/posts/${id}`, {
         method: 'PUT',
         headers: {
         'Content-type': 'application/json'
@@ -38,18 +46,20 @@ function Posts() {
     //Setting the initial posts state as the DB
     useEffect(() => {
       const fetchPosts = async () => {
-        const res = await fetch('http://localhost:5000/posts');
+        const res = await fetch('http://localhost:8080/posts-api/posts');
         const data = await res.json();
         dispatch(initialSetPosts(data))
       };
       fetchPosts();
   
     }, []);
+
+    
    
     return (
     <div>    
     <SortersAndFilters />
-            {posts && posts.map((post) => 
+            {posts && reversedPosts.map((post) => 
           
             <div key={post.id}>
                         
