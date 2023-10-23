@@ -1,5 +1,28 @@
 {
   "posts": [
-    
+    {
+      "author": "shjsbkj",
+      "colour": "",
+      "content": "1",
+      "date": "1111-11-11",
+      "likes": 7,
+      "id": 1
+    },
+    {
+      "author": "qqq",
+      "colour": "#0f50d2",
+      "content": "1",
+      "date": "1111-11-11",
+      "likes": 11,
+      "id": 2
+    },
+    {
+      "author": "bkajbdj",
+      "colour": "#e70808",
+      "content": "bgjwr",
+      "date": "1111-11-11",
+      "likes": 6,
+      "id": 3
+    }
   ]
 }
