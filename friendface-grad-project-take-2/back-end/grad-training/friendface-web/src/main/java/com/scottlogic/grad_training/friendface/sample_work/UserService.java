@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.sample_work;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,11 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
     public List<User> findAll() {
         return userRepository.findAll();
     }
-
     public void save(User user) {
         userRepository.save(user);
     }
 }
+

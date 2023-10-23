@@ -1,6 +1,4 @@
-package com.scottlogic.grad_training.friendface;
-
-import org.springframework.stereotype.Service;
+package com.scottlogic.grad_training.friendface.sample_work;
 
 public class EmployeeOfTheMonthService {
     private final boolean formatNamesInUpperCase;

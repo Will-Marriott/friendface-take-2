@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.sample_work;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +12,14 @@ import jakarta.validation.constraints.NotBlank;
         @Id
         @Column
         private String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public User() {
+
+    }
 
     public String getUsername() {
             return username;
