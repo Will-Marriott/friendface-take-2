@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.user_post_api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,6 @@ public class UserPostController {
         if (post == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        // Set any other properties you need for the UserPost, like generating an ID or timestamp.
 
         // Save the UserPost to the database using your service
         UserPost savedPost = new UserPost();

@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.user_post_api;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;

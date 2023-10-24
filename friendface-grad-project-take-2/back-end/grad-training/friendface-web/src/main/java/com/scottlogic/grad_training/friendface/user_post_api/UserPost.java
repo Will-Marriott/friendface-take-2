@@ -1,4 +1,4 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.user_post_api;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -71,7 +71,4 @@ import jakarta.persistence.Table;
         return date;
     }
 
-//public Object getUserPosts() {
-//        return
-//}
     }

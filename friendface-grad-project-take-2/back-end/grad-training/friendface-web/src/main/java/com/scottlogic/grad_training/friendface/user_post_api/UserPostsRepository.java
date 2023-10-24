@@ -1,8 +1,6 @@
-package com.scottlogic.grad_training.friendface;
+package com.scottlogic.grad_training.friendface.user_post_api;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface UserPostsRepository extends JpaRepository<UserPost, Object> {
 
