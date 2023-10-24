@@ -1,111 +1,127 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPost } from '../Store/Features/postsSlice';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { initialSetPosts } from '../Store/Features/postsSlice';
+import { useSelector } from 'react-redux';
 
 function AddPostForm() {
-  
-  
-  //Setting the states for each element of form
-  const [author, setAuthor] = useState('')
-  const [content, setContent] = useState('')
-  const [date, setDate] = useState('')
-  const [colour, setColour] = useState('')
-  const dispatch = useDispatch()  
-  
-  //Adds new post to DB and state
-  const addPostToServer = async () => {
-    const post={
-      "author": author,
-      "colour": colour || '#000000',
-      "content": content,
-      "date": date,
-      "likes": 0,
-      "id": posts.length + 1
+  const [author, setAuthor] = useState('');
+  const [content, setContent] = useState('');
+  const [date, setDate] = useState('');
+  const [colour, setColour] = useState('#000000');
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.value);
+
+  const handleColorChange = (event) => {
+    setColour(event.target.value);
+  };
+
+  const clearForm = () => {
+    setAuthor('');
+    setContent('');
+    setDate('');
+    setColour('#000000');
+  };
+
+  const setPostsFromApi = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/posts-api/posts');
+      if (response.ok) {
+        const data = await response.json();
+        dispatch(initialSetPosts(data));
+      } else {
+        console.error('Failed to fetch posts:', response.status);
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
     }
-    
-    const res = await fetch('http://localhost:8080/posts-api/posts', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(post),
-    })
-    dispatch(addPost(post))
-  }
+  };
 
-  
-  const posts = useSelector(state => state.posts.value) 
+  const addPostToServer = async () => {
+    const post = {
+      author: author,
+      colour: colour,
+      content: content,
+      date: date,
+      likes: 0,
+      id: posts.length + 1,
+    };
 
-  
-  const onSubmit = (e) => {
-    e.preventDefault()
-    addPostToServer();
-    setAuthor('')
-    setContent('')
-    setDate('')
-    setColour('')
-  }
+    try {
+      const response = await fetch('http://localhost:8080/posts-api/posts', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(post),
+      });
 
-  //Logs post state
-  const onClick = () => console.log(posts)
+      if (response.ok) {
+        setPostsFromApi();
+        clearForm();
+      } else {
+        console.error('Failed to add a new post:', response.status);
+      }
+    } catch (error) {
+      console.error('Error adding a new post:', error);
+    }
+  };
 
-  
+  const logPostsState = () => {
+    console.log(posts);
+  };
+
   return (
-    // form copied over from html project, with some adjustments
     <div>
-      <form id="add-post" className='add-form' onSubmit={onSubmit}>
-        
-        Author:
-        <input 
-        id="author-field" 
-        type="text"
-        placeholder="Enter your name here..."
-        value={author}
-        onChange={(e) => {
-          setAuthor(e.target.value)
-        }}
-        required/>
-        
-        Avatar colour:
-        <input 
-        type="color" 
-        id="avatar-colour"
-        onChange={(e) => {
-          setColour(e.target.value)}}
-        /> 
-        
-        Date:
-        <input 
-        id="date-field" 
-        type="date"
-        value={date}
-        onChange={(e) => {
-          setDate(e.target.value)}} 
-        required />
-        <br />
-        
-        Content:
-        <br />
-        <textarea 
-        rows="4" 
-        cols="100" 
-        id="content-field"
-        value={content} 
-        type="text" 
-        placeholder='Share your thoughts...'
-        onChange={(e) => {
-          setContent(e.target.value)}}
-        required></textarea>
-        <br />
-        
-        <input type='submit' value='Post' className='btn-submit'/>
-
+      <form id="add-post" className="add-form" onSubmit={addPostToServer}>
+        <label htmlFor="author-field">Author:</label>
+        <input
+          id="author-field"
+          type="text"
+          placeholder="Enter your name here..."
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          required
+        />
+        <label htmlFor="avatar-colour">Avatar colour:</label>
+        <input
+          type="color"
+          id="avatar-colour"
+          value={colour}
+          onChange={handleColorChange}
+        />
+        <label htmlFor="date-field">Date:</label>
+        <input
+          id="date-field"
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+        <label htmlFor="content-field">Content:</label>
+        <textarea
+          rows="4"
+          cols="100"
+          id="content-field"
+          value={content}
+          type="text"
+          placeholder="Share your thoughts..."
+          onChange={(e) => setContent(e.target.value)}
+          required
+        />
+        <div>
+          <button type="submit" className="btn-submit">
+            Post
+          </button>
+          <button type="button" onClick={clearForm}>
+            Clear
+          </button>
+          <button type="button" onClick={logPostsState}>
+            Log posts state
+          </button>
+        </div>
       </form>
-      <input type='button' value='Log posts state'  onClick={onClick} />
     </div>
-
-  )
+  );
 }
 
-export default AddPostForm
+export default AddPostForm;

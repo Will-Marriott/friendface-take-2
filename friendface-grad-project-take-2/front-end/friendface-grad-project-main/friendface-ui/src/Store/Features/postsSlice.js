@@ -3,9 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = []
 
-
-
-
 export const postsSlice = createSlice({
     name: "posts",
     initialState: {value: initialState},
@@ -23,13 +20,17 @@ export const postsSlice = createSlice({
             
         },
         addLike: (state, action) => {
-            //payload will be post.id
-            let targetPost = [...state.value][action.payload-1];
-
-            let updatedPost = {...targetPost, likes: targetPost.likes++}
-            let currentPosts = [...state.value]
-            currentPosts[action.payload-1] = updatedPost
-        },
+            const postId = action.payload; // Payload is the post ID
+            const updatedPosts = state.value.map((post) => {
+              if (post.id === postId) {
+                // Update the likes for the target post
+                return { ...post, likes: post.likes + 1 };
+              }
+              return post;
+            });
+            return { ...state, value: updatedPosts };
+          }
+          ,
         initialSetPosts: (state, action) => {
             //payload will be an array of posts fetched from DB
             let currentPosts = [...action.payload]
