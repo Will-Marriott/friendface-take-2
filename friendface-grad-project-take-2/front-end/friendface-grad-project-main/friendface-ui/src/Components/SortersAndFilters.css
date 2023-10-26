@@ -1,0 +1,64 @@
+.sorters-and-filters {
+    background-color: #f0f5f5;
+    border: 1px solid #b3ccdd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #888888;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  
+  .sorters-and-filters label {
+    color: #357070;
+    font-weight: bold;
+  }
+  
+  .sorters-and-filters select,
+  .sorters-and-filters input[type="text"],
+  .sorters-and-filters input[type="date"] {
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #357070;
+    border-radius: 5px;
+  }
+  
+  .sorters-and-filters input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin: 5px 0;
+  }
+  
+  .sorters-and-filters textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #357070;
+    border-radius: 5px;
+  }
+  
+  .sorters-and-filters button[type="button"] {
+    background-color: #4db6ac;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+  }
+
+  .sorters-and-filters button[type="submit"] {
+    background-color: #4db6ac;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+  }
+  
+  .sorters-and-filters button[type="button"]:hover {
+    background-color: #357070;
+  }
+  

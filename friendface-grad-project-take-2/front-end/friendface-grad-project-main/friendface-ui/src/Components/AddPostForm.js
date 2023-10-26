@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { initialSetPosts } from '../Store/Features/postsSlice';
 import { useSelector } from 'react-redux';
+import styles from './AddPostForm.css'; // Import the CSS file
 
 function AddPostForm() {
   const [author, setAuthor] = useState('');
@@ -73,35 +74,41 @@ function AddPostForm() {
   return (
     <div>
       <form id="add-post" className="add-form" onSubmit={addPostToServer}>
-        <label htmlFor="author-field">Author:</label>
+        <label htmlFor="author-field">Author:  </label>
         <input
           id="author-field"
+          className="input-field-author"
           type="text"
           placeholder="Enter your name here..."
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
-        <label htmlFor="avatar-colour">Avatar colour:</label>
+        <label htmlFor="avatar-colour">Avatar colour:   </label>
         <input
           type="color"
           id="avatar-colour"
           value={colour}
           onChange={handleColorChange}
         />
-        <label htmlFor="date-field">Date:</label>
+        
+        <label htmlFor="date-field">Date:  </label>
         <input
           id="date-field"
+          className="input-field"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
         />
+        <br />
         <label htmlFor="content-field">Content:</label>
+        <br />
         <textarea
           rows="4"
           cols="100"
           id="content-field"
+          className="input-field"
           value={content}
           type="text"
           placeholder="Share your thoughts..."

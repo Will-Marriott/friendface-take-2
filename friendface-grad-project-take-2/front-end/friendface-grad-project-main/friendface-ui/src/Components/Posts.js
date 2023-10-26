@@ -32,7 +32,7 @@ function Posts() {
       const updPost = { ...postToLike}
       updPost.likes++
 
-      const res = await fetch(`http://localhost:8080/posts-api/posts/${id}`, {
+      await fetch(`http://localhost:8080/posts-api/posts/${id}`, {
         method: 'PUT',
         headers: {
         'Content-type': 'application/json'
@@ -96,8 +96,10 @@ function Posts() {
             
             )}
     </div>
+    
   )
 }
 
 
 export default Posts
+

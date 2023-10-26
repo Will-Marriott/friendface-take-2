@@ -1,0 +1,55 @@
+/* styles.css */
+.add-form {
+    background-color: #f0f5f5;
+    border: 1px solid #b3ccdd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #888888;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .add-form label {
+    color: #357070;
+    font-weight: bold;
+  }
+  
+  .add-form input[type="text"],
+  .add-form input[type="date"] {
+    width:25%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #357070;
+    border-radius: 5px;
+  }
+  
+  .add-form input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin: 5px 0;
+  }
+  
+  .add-form textarea {
+    width: 75%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #357070;
+    border-radius: 5px;
+  }
+  
+  .add-form .btn-submit,
+  .add-form button[type="button"] {
+    background-color: #4db6ac;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+  }
+  
+  .add-form .btn-submit:hover,
+  .add-form button[type="button"]:hover {
+    background-color: #357070;
+  }
+  
