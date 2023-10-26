@@ -22,21 +22,20 @@ public class PostSorterController {
     @GetMapping("/sort-author-asc")
     public List<UserPost> getUserPostsAuthorAsc() {
     return postSorterService.sortAuthorAsc();
-};
+}
 
     @GetMapping("/sort-author-desc")
     public List<UserPost> getUserPostsAuthorDesc() {
         return postSorterService.sortAuthorDesc();
-    };
-//    Create get mapping for each sorter kind - create methods for each in the service layer.
+    }
 
     @GetMapping("/sort-date-newest-first")
     public List<UserPost> getUserPostsDateNewestFirst() {
         return postSorterService.sortDateNewestFirst();
-    };
+    }
 
     @GetMapping("/sort-date-oldest-first")
     public List<UserPost> getUserPostsDateOldestFirst() {
         return postSorterService.sortDateOldestFirst();
-    };
+    }
 }
