@@ -58,7 +58,7 @@ function Posts() {
    
     return (
     <div>    
-    <SortersAndFilters />
+
             {posts && reversedPosts.map((post) => 
           
             <div key={post.id}>
@@ -85,9 +85,10 @@ function Posts() {
               <div className='postContent'>
               {post.content}<br/>
               </div>
-              
-              <button onClick={() => onLike(post.id)}>Like</button>
-              <div>{post.likes} like(s)</div>
+              <div>
+                <button className='likeButton' onClick={() => onLike(post.id)}>Like</button>
+                {post.likes} like(s)
+              </div>
             
             
             </div>

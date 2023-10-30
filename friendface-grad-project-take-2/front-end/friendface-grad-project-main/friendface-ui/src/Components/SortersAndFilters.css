@@ -5,6 +5,7 @@
     box-shadow: 2px 2px 4px #888888;
     padding: 20px;
     margin: 20px;
+    max-width: 100%;
   }
   
   
@@ -61,4 +62,13 @@
   .sorters-and-filters button[type="button"]:hover {
     background-color: #357070;
   }
+  
+  select#sort-posts-option.multi-select-sorter-filter {
+    width: 100%;
+  }
+
+  select#filter-posts-option.multi-select-sorter-filter {
+    width: 100%;
+  }
+
   

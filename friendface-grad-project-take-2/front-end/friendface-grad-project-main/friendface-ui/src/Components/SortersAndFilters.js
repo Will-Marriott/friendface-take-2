@@ -87,15 +87,17 @@ function SortersAndFilters() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the form from submitting
-    handleFilterApply(); // Call the filter apply function
+    event.preventDefault();
+    handleFilterApply();
   };
 
   return (
     <div className="sorters-and-filters">
       <form>
         <label htmlFor="sort-posts-option">Sort posts by:</label>
+        <br />
         <select
+          className='multi-select-sorter-filter'
           name="sort-posts-option"
           id="sort-posts-option"
           onChange={handleOptionChange}
@@ -111,13 +113,16 @@ function SortersAndFilters() {
             <option value="date-descending">Sort by Date (Oldest First)</option>
           </optgroup>
         </select>
+        <br />
         <button type="button" onClick={handleApply} className="btn-submit" disabled={loading}>
           {loading ? 'Applying...' : 'Apply Sort'}
         </button>
       </form>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='filter-form'>
         <label htmlFor="filter-posts-option">Filter posts by:</label>
+        <br />
         <select
+          className='multi-select-sorter-filter'
           name="filter-posts-option"
           id="filter-posts-option"
           onChange={handleFilterOptionChange}
@@ -129,6 +134,7 @@ function SortersAndFilters() {
         </select>
         {filterOption === 'Filter by Keyword' && (
           <input
+            className='filter-keyword'
             type="text"
             name="keyword"
             id="keyword"
@@ -149,6 +155,7 @@ function SortersAndFilters() {
             />
             <br />
             <label htmlFor="to-date">To Date: </label>
+            <br />
             <input
               type="date"
               name="to-date"
@@ -158,6 +165,7 @@ function SortersAndFilters() {
             />
           </div>
         )}
+        <br />
         <button type="button" onClick={handleFilterApply} className="btn-submit" disabled={loading}>
           {loading ? 'Applying...' : 'Apply Filter'}
         </button>

@@ -12,7 +12,13 @@ function App() {
     <div className='container'>
       <Header />
       <CreatePost/>
-      <Posts/>
+      <div className="posts-section">
+        <div>
+          <Posts/>
+        </div>
+        <div>
+        </div>
+      </div>
     </div>
 
   );

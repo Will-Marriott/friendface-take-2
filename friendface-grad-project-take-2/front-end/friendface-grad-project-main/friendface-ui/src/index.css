@@ -43,6 +43,20 @@ body {
     
   
   }
+
+  button.likeButton {
+    font-family: Verdana, helvetica, Tahoma, sans-serif;
+    color: #ffffff;
+    border: rgb(0, 0, 0);
+    border-style: solid;
+    background-color: #4db6ac ;
+    margin: 15px;
+    border-width:thin;
+    max-width:100%;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #b9b9b9;
+  }
   
   div.avatarColouredBox {
     display: inline-block;
@@ -58,18 +72,34 @@ body {
   
   div.postContainer {
     font-family: Verdana, helvetica, Tahoma, sans-serif;
-    border: black;
+    border: 1px solid #b3ccdd;
     border-style: solid;
-    background-color: #ffffff ;
+    background-color: #f0f5f5 ;
     margin: 15px;
     border-width:thin;
     padding: 1rem;
     border-radius: 30px;
     width: fit-content;
-    box-shadow: 5px 5px 10px #b9b9b9;
+    box-shadow: 2px 2px 4px #888888;
   }
   
   div.avatarImage {
     width: 10px;
     margin: 3px;
+  }
+
+  div.create-post {
+    display: flex;
+    justify-content: left;
+  }
+
+  div.posts-section {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1.title {
+    color: #4db6ac;
+    font-style: italic;
+    font-size: 500%
   }

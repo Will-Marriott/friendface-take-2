@@ -84,7 +84,8 @@ function AddPostForm() {
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
-        <label htmlFor="avatar-colour">Avatar colour:   </label>
+        <br />
+        <label htmlFor="avatar-colour">Avatar colour:</label>
         <input
           type="color"
           id="avatar-colour"
@@ -92,7 +93,7 @@ function AddPostForm() {
           onChange={handleColorChange}
         />
         
-        <label htmlFor="date-field">Date:  </label>
+        <label htmlFor="date-field">Date: </label>
         <input
           id="date-field"
           className="input-field"
@@ -122,9 +123,9 @@ function AddPostForm() {
           <button type="button" onClick={clearForm}>
             Clear
           </button>
-          <button type="button" onClick={logPostsState}>
+          {/* <button type="button" onClick={logPostsState}>
             Log posts state
-          </button>
+          </button> */}
         </div>
       </form>
     </div>
